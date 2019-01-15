@@ -27,8 +27,42 @@ InputIt myfind(InputIt first, InputIt last, const T& val){
   return last;
 }
 
+/*
+void print(int (&arr)[10]){
+  for(auto el : arr){
+    std::cout << el << ",";
+  }
+  std::cout << std::endl;
+}
+*/
 
+template <typename T, unsigned M>
+void print(const T (&arr)[M]){
+  for(auto a : arr){
+    std::cout << a << ",";
+  }
+  std::cout << std::endl;
+}
+
+template<typename Arr>
+void prints(const Arr& arr){
+  for(auto a : arr){
+    std::cout << a << ",";
+  }
+  std::cout << std::endl;
+}
+
+template<typename T, unsigned M>
+T* mybegin(T (&arr)[M]){
+  return arr;
+}
+
+template<typename T, unsigned M>
+T* myend(T (&arr)[M]){
+  return arr + M;
+}
 int main(){
+  /*
   compare("hi", "aaa");
   com<int>(123, 123);
 
@@ -39,4 +73,24 @@ int main(){
   list<string> sl{"as3","2ds","111"};
   auto al = myfind(sl.cbegin(), sl.cend(), string("2ds"));
   cout << *al << endl;
+  */
+
+  /*
+  int i[10] = {1,2,3,4,5,6,7,8,9,0};
+  print(i);
+  int j[2] = {1,2};
+  print(j);
+  //prints(j);
+  const char c[] = {'f','s','a','a'};
+  print(c);
+  //prints(c);
+  int k = 10;
+  //prints(k);
+  */
+
+  int ii[] = {2,3,5,1,3,6,9};
+  for(auto a = mybegin(ii); a !=myend(ii); ++a){
+    std::cout << *a << ",";
+  }
+  std::cout << std::endl;
 }
