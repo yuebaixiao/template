@@ -21,6 +21,9 @@ template<typename T> class Blob{
   typedef typename std::vector<T>::size_type size_type;
   Blob();
   Blob(std::initializer_list<T>);
+
+  template<typename IT>Blob(IT b, IT e);
+  
   size_type size() const{return data->size();}
   bool empty()const {return data->empty();}
   void push_back(const T& t){data->push_back(t);}
@@ -89,4 +92,8 @@ const T& Blob<T>::operator[](size_type idx)const{
   return (*data)[idx];
 }
 
+template<typename T>
+template<typename IT>
+Blob<T>::Blob(IT b, IT e):
+data(std::make_shared<std::vector<T>>(b, e)){}
 #endif
